@@ -19,6 +19,6 @@
     "handlebars-helpers": "^0.10.0"
   },
   "devDependencies": {
-    "ws": "3.3.2"
+    "mocha": "^6.2.0"
   }
 }
