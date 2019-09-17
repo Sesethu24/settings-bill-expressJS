@@ -56,7 +56,7 @@
                       <td>
                         <a href="/actions">Total</a>
                       </td>
-                      <td> R<span class="totalSettings">{{totals.grandTotal}}</span> </td>
+                      <td> R<span class="totalSettings {{color}}">{{totals.grandTotal}}</span> </td>
                     </tr>
                   </table>
 
@@ -71,7 +71,7 @@
               <label for="">Warning level</label>
               <input class="u-full-width warningLevelSetting " type="number" name="warningLevel" step=".01" placeholder="eg. 30.00" class="warningLevel" value="{{setting.warningLevel}}" >
               <label for="">Critical level</label>
-              <input class="u-full-width criticalLevelSetting" type="number" name="criticalLevel" step=".01" placeholder="eg. 65.00" value="{{setting.warningLevel}}">
+              <input class="u-full-width criticalLevelSetting" type="number" name="criticalLevel" step=".01" placeholder="eg. 65.00" value="{{setting.criticalLevel}}">
               <button class="button-primary updateSettings" type="submit" name="button">Update settings</button>
 
               </form>

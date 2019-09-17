@@ -11,6 +11,7 @@ app.use(express.static('public'));
 
 var exphbs  = require('express-handlebars');
 
+
 const handlebarSetup = exphbs({
     partialsDir: "./views/partials",
     viewPath:  './views',
@@ -27,7 +28,8 @@ app.get('/', function (req, res) {
 
     res.render('index',
      {setting: settingsBill.getSettings(),
-      totals: settingsBill.totals()
+      totals: settingsBill.totals(),
+      color: settingsBill.colorChanger()
     });
 })
 app.post('/settings', function (req, res) {
