@@ -1,7 +1,4 @@
-const Moment = require('moment');
-const MomentRange = require('moment-range');
 
-const moment = MomentRange.extendMoment(Moment);
 
 module.exports = function SettingsBill() {
 
@@ -30,21 +27,21 @@ module.exports = function SettingsBill() {
     }
 
     function recordAction(action) {
-       if(!colorStopper()){
-        let cost = 0;
-        if (action === 'sms') {
-            cost = smsCost;
-        }
-        else if (action === 'call') {
-            cost = callCost;
-        }
+        if (!colorStopper()) {
+            let cost = 0;
+            if (action === 'sms') {
+                cost = smsCost;
+            }
+            else if (action === 'call') {
+                cost = callCost;
+            }
 
-        actionList.push({
-            type: action,
-            cost,
-            timestamp: moment(new Date()).fromNow()
-        });
-    }
+            actionList.push({
+                type: action,
+                cost,
+                timestamp: new Date()
+            });
+        }
     }
     function actions() {
         return actionList;
@@ -113,21 +110,21 @@ module.exports = function SettingsBill() {
     }
     function colorChanger() {
         if (totals().grandTotal >= criticalLevel) {
-          return "danger";
+            return "danger";
         } else if (
-          totals().grandTotal >= warningLevel &&
-          totals().grandTotal <= criticalLevel
+            totals().grandTotal >= warningLevel &&
+            totals().grandTotal <= criticalLevel
         ) {
-          return "warning";
+            return "warning";
         } else {
-          return "";
+            return "";
         }
-      }
-    
-      function colorStopper() {
-        
+    }
+
+    function colorStopper() {
+
         return grandTotal() >= criticalLevel;
-      }
+    }
 
     return {
         setSettings,
