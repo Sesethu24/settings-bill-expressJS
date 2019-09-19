@@ -28,21 +28,22 @@ module.exports = function SettingsBill() {
 
     function recordAction(action) {
         if (!colorStopper()) {
-            let cost = 0;
+            var cost = 0;
             if (action === 'sms') {
                 cost = smsCost;
             }
             else if (action === 'call') {
                 cost = callCost;
             }
-            else if(action !== undefined){
+        }
+        if(action !== undefined){
 
             actionList.push({
                 type: action,
                 cost,
                 timestamp: new Date()
             });
-        }
+        
     }
 }
     function actions() {
