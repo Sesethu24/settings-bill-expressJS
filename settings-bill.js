@@ -35,6 +35,7 @@ module.exports = function SettingsBill() {
             else if (action === 'call') {
                 cost = callCost;
             }
+            else if(action !== undefined){
 
             actionList.push({
                 type: action,
@@ -43,6 +44,7 @@ module.exports = function SettingsBill() {
             });
         }
     }
+}
     function actions() {
         return actionList;
     }
@@ -55,7 +57,7 @@ module.exports = function SettingsBill() {
             const action = actionList[index];
 
             if (action.type === type) {
-
+           
                 filteredActions.push(action);
             }
         }

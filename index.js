@@ -4,15 +4,7 @@ let bodyParser = require('body-parser');
 var moment = require('moment');
 moment().format();
 
-// const Moment = require('moment');
-// const MomentRange = require('moment-range');
-
-// const moment = MomentRange.extendMoment(Moment);
-
 let SettingsBill = require("./settings-bill")
-
-
-
 
 let settingsBill = SettingsBill();
 
