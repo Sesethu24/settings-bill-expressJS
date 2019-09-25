@@ -36,7 +36,7 @@ module.exports = function SettingsBill() {
                 cost = callCost;
             }
         }
-        if(action !== undefined){
+        if(action !== undefined && action !== 0){
 
             actionList.push({
                 type: action,
