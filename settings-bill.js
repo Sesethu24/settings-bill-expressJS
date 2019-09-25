@@ -1,11 +1,10 @@
-
-
 module.exports = function SettingsBill() {
 
-    let smsCost=0;
-    let callCost=0;
-    let warningLevel;
-    let criticalLevel;
+    let smsCost = 0;
+    let callCost = 0;
+    let warningLevel = 0;
+    let criticalLevel = 0;
+    let total = 0;
 
     let actionList = [];
 
@@ -35,22 +34,23 @@ module.exports = function SettingsBill() {
             else if (action === 'call') {
                 cost = callCost;
             }
-        }
-        if(action !== undefined && action !== 0){
+        
+        if (action !== undefined) {
 
             actionList.push({
                 type: action,
                 cost,
                 timestamp: new Date()
             });
-        
+        }
+        }
     }
-}
     function actions() {
         return actionList;
     }
 
     function actionsFor(type) {
+        console.log()
         const filteredActions = [];
 
 
@@ -58,15 +58,13 @@ module.exports = function SettingsBill() {
             const action = actionList[index];
 
             if (action.type === type) {
-           
+
                 filteredActions.push(action);
             }
         }
-
+ 
         return filteredActions;
-
-
-    }
+     }
 
     function getTotal(type) {
         let total = 0;
@@ -80,9 +78,7 @@ module.exports = function SettingsBill() {
             }
         }
         return total;
-
-
-    }
+     }
 
     function grandTotal() {
         return getTotal('sms') + getTotal('call');
@@ -108,20 +104,19 @@ module.exports = function SettingsBill() {
     }
 
     function hasReachedCriticalLevel() {
-        const total = grandTotal();
+        //const total = grandTotal();
         return total >= criticalLevel;
     }
     function colorChanger() {
+        if(criticalLevel !==0){
         if (totals().grandTotal >= criticalLevel) {
             return "danger";
-        } else if (
-            totals().grandTotal >= warningLevel &&
-            totals().grandTotal <= criticalLevel
-        ) {
+        } else if (totals().grandTotal >= warningLevel && totals().grandTotal <= criticalLevel) {
             return "warning";
         } else {
             return "";
         }
+    }
     }
 
     function colorStopper() {
